@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .maincontainer {
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .clockcontainer {
+        background-image: url("https://res.cloudinary.com/djomnr5y2/image/upload/v1675619592/5054_impkri.png");
+        background-size: cover;
+        height: 500px;
+        width: 500px;
+        border-radius: 100%;
+      }
+      #hour,
+      #minute,
+      #second {
+        position: absolute;
+        transform-origin: bottom;
+        border-radius: 30%;
+      }
+      #hour {
+        height: 20%;
+        background-color: red;
+        width: 10px;
+        top: 30%;
+        left: 49.6%;
+      }
+      #minute {
+        height: 23%;
+        background-color: green;
+        width: 6px;
+        top: 27%;
+        left: 49.6%;
+        border-radius: 30%;
+      }
+      #second {
+        background-color: blue;
+        height: 26%;
+        width: 6px;
+        top: 24%;
+        left: 49.6%;
+        border-radius: 30%;
+      }
+    </style>
+    <div class="maincontainer">
+      <div class="clockcontainer">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+      </div>
+    </div>
+    <script>
+      let hour = document.getElementById("hour");
+      let minute = document.getElementById("minute");
+      let second = document.getElementById("second");
+
+      setInterval(() => {
+        let d = new Date();
+        let hr = d.getHours();
+        let mn = d.getMinutes();
+        let sec = d.getSeconds();
+
+        let hr_vlue = 30 * hr + mn / 2;
+        let mn_vlue = 6 * mn;
+        let sc_vlue = 6 * sec;
+
+        hour.style.transform = `rotate(${hr_vlue}deg)`;
+        minute.style.transform = `rotate(${mn_vlue}deg)`;
+        second.style.transform = `rotate(${sc_vlue}deg)`;
+      }, 1000);
+    </script>
+  </body>
+</html>
